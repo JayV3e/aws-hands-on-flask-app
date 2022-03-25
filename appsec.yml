@@ -1,0 +1,11 @@
+version: 0.0
+os: linux
+files:
+  - source: /app.py
+    destination: /tmp/
+  - source: /requirements.txt
+    destination: /tmp/
+hooks:
+  BeforeInstall:
+    - location: scripts/install.sh
+      timeout: 3600
