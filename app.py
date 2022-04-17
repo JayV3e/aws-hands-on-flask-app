@@ -1,10 +1,9 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request
 from flask_cors import cross_origin
 from datetime import date
 import boto3
 
 app = Flask(__name__)
-
 dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
 table = dynamodb.Table('Thankful')
 
