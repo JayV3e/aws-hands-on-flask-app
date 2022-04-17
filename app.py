@@ -1,12 +1,9 @@
 from flask import Flask, jsonify, request, render_template
-from flask_cors import CORS,cross_origin
+from flask_cors import cross_origin
 from datetime import date
 import boto3
 
 app = Flask(__name__)
-
-
-CORS(app)
 
 dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
 table = dynamodb.Table('Thankful')
@@ -39,4 +36,4 @@ def all_thankfuls():
     return jsonify(response_object)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',debug=True)
