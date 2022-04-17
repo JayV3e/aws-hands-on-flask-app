@@ -101,7 +101,7 @@ export default {
   },
   methods: {
     getThankful() {
-      const path = 'http://localhost:5000/';
+      const path = 'http://127.0.0.1:5000/';
       axios.get(path)
         .then((res) => {
           this.thankful = res.data;
@@ -111,7 +111,7 @@ export default {
         });
     },
     addThankful(payload) {
-      const path = 'http://localhost:5000/';
+      const path = 'http://127.0.0.1:5000/';
       axios
         .post(path, payload)
         .then(() => {
