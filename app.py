@@ -1,7 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 from datetime import date
-
+import os
 import boto3
 
 app = Flask(__name__)
@@ -11,10 +11,6 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 
 dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
 table = dynamodb.Table('Thankful')
-
-@app.route("/")
-def hello():
-    return 'world'
 
 @app.route("/health")
 def health():
@@ -43,4 +39,4 @@ def all_thankfuls():
     return jsonify(response_object)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)
