@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 CORS(app, resources={r'/*': {'origins': '*'}})
 
-dynamodb = boto3.resource('dynamodb', Region="us-east-1")
+dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
 table = dynamodb.Table('Thankful')
 
 @app.route("/")
