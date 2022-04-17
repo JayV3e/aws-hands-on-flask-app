@@ -16,7 +16,7 @@ table = dynamodb.Table('Thankful')
 def health():
     return jsonify({'status': 'ok'})
 
-@app.route('/thankful', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def all_thankfuls():
     response_object = {'status': 'success'}
     response = table.scan()
