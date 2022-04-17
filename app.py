@@ -1,4 +1,3 @@
-from cairo import Region
 from flask import Flask, jsonify
 from flask_cors import CORS
 from datetime import date
