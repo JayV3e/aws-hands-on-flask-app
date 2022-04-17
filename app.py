@@ -2,9 +2,14 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from datetime import date
 
+import logging
 import boto3
+logging.basicConfig(
+    format='%(asctime)s - %(module)s - %(levelname)s - %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
+    filename='vars/logs/flask.log', level=logging.DEBUG)
 
 app = Flask(__name__)
+
 
 CORS(app, resources={r'/*': {'origins': '*'}})
 
