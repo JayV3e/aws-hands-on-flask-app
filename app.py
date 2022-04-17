@@ -1,10 +1,11 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from datetime import date
 import boto3
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
 table = dynamodb.Table('Thankful')
 
@@ -13,6 +14,7 @@ def health():
     return jsonify({'status': 'ok'})
 
 @app.route('/', methods=['GET', 'POST'])
+@cross_origin()
 def all_thankfuls():
     response_object = {'status': 'success'}
     response = table.scan()
