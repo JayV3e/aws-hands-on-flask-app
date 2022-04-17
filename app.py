@@ -2,11 +2,25 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from datetime import date
 
-import logging
 import boto3
-logging.basicConfig(
-    format='%(asctime)s - %(module)s - %(levelname)s - %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
-    filename='vars/logs/flask.log', level=logging.DEBUG)
+
+from logging.config import dictConfig
+
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+    }},
+    'handlers': {'wsgi': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://flask.logging.wsgi_errors_stream',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'DEBUG',
+        'handlers': ['wsgi']
+    }
+})
 
 app = Flask(__name__)
 
