@@ -14,7 +14,7 @@ table = dynamodb.Table('Thankful')
 
 @app.route("/")
 def hello():
-    return 'hello'
+    return 'world'
 
 @app.route("/health")
 def health():
