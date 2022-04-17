@@ -39,6 +39,4 @@ def all_thankfuls():
     return jsonify(response_object)
 
 if __name__ == "__main__":
-    import logging
-    logging.basicConfig(filename='flask.log',level=logging.DEBUG)
     app.run(host='0.0.0.0', port=5000)
