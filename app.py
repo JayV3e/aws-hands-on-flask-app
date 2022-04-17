@@ -1,3 +1,4 @@
+from cairo import Region
 from flask import Flask, jsonify
 from flask_cors import CORS
 from datetime import date
@@ -8,7 +9,7 @@ app = Flask(__name__)
 
 CORS(app, resources={r'/*': {'origins': '*'}})
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', Region="us-east-1")
 table = dynamodb.Table('Thankful')
 
 @app.route("/")
