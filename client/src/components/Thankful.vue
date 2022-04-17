@@ -111,7 +111,7 @@ export default {
         });
     },
     addThankful(payload) {
-      const path = 'http://localhost:5000/thankful';
+      const path = 'http://localhost/thankful';
       axios
         .post(path, payload)
         .then(() => {
